@@ -162,6 +162,10 @@ func ParseTags(rows []csv.Row) (map[string][]string, error) {
 			return nil, headerError(headerTag)
 		}
 
+		if tag == "" {
+			continue
+		}
+
 		childTags, ok := row.GetStringSlice(headerChildTags, ", ")
 		if !ok {
 			return nil, headerError(headerChildTags)
