@@ -5,7 +5,7 @@ from typing import Dict, List, Set
 from BaseClasses import MultiWorld
 from apworldrework.tricks import Loadout, state_to_loadout, loadout_to_bit_rep, bit_rep_to_summary
 import lib.apworld_helper as apw
-import lib.apworldreworkd_helper as apwr
+import lib.apworldrework_helper as apwr
 from lib.difficulty import DIFFICULTIES, convert_index_to_str
 from lib.state import build_states
 
