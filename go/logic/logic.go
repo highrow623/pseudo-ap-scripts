@@ -128,6 +128,35 @@ func NewLoadout(row csv.Row) (Loadout, error) {
 	}, nil
 }
 
+func (loadout Loadout) BitRep() int {
+	var bitRep int
+	mask := 1
+
+	markIfTrue := func(condition bool) {
+		if condition {
+			bitRep = bitRep | mask
+		}
+		mask = mask << 1
+	}
+
+	markIfTrue(loadout.DreamBreaker)
+	markIfTrue(loadout.Strikebreak)
+	markIfTrue(loadout.SoulCutter)
+	markIfTrue(loadout.Sunsetter)
+	markIfTrue(loadout.Slide)
+	markIfTrue(loadout.SolarWind)
+	markIfTrue(loadout.AscendantLight)
+	for i := 1; i <= 6; i++ {
+		markIfTrue(loadout.Clings >= i)
+	}
+	for i := 1; i <= 4; i++ {
+		markIfTrue(loadout.Kicks >= i)
+	}
+	markIfTrue(loadout.SmallKeys)
+
+	return bitRep
+}
+
 func GetName(row csv.Row) (name string, isLocation bool, err error) {
 	var ok bool
 	name, ok = row.GetString(headerLocation)

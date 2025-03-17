@@ -1,3 +1,6 @@
 scratch/*
 sheets/*
 tricks/*
+results/*
+__pycache__
+custom_worlds/
